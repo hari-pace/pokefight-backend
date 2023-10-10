@@ -5,7 +5,7 @@ const cors = require("cors");
 require("dotenv").config();
 const port = 3000;
 const pokemon = require("./routes/pokemon");
-
+const user = require("./routes/user");
 connectDB();
 
 app.use(express.json());
@@ -17,7 +17,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/pokemon", pokemon);
+app.use("/user", user);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Example app listening on http://localhost:${port}`);
 });
