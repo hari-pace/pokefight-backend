@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/pokemon", pokemon);
-app.use("/user", user);
+app.use("/game", user);
 
 app.listen(port, () => {
   console.log(`Example app listening on http://localhost:${port}`);
