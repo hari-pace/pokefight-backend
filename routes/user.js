@@ -11,6 +11,6 @@ const api = express.Router();
 
 api.route("/user").get(getAllUser).post(createUser);
 
-api.route("/:userId").get(getOneUser).put(updateUser).delete(deleteUser);
+api.route("/user/:id").get(getOneUser).put(updateUser).delete(deleteUser);
 
 module.exports = api;
