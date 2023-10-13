@@ -3,7 +3,7 @@ const User = require("../schemas/User");
 // get all users
 const getAllUser = async (req, res) => {
   try {
-    const user = await User.find().sort({ id: 1 });
+    const user = await User.find().sort({ score: -1 });
     if (!user.length) {
       res.status(200).json({ msg: "No user in the DB" });
     } else {
@@ -44,17 +44,15 @@ const createUser = async (req, res) => {
 // update an user
 const updateUser = async (req, res) => {
   try {
-    const { name, score } = req.body;
-    const { id } = req.params;
-
-    const user = await User.findByIdAndUpdate(
-      id,
+    const { username } = req.body;
+    const user = await User.findOneAndUpdate(
+      { username: username },
       {
-        name,
-        score,
+        $inc: { score: 1 },
       },
       {
         new: true, // update and give me the new data
+        upsert: true,
       }
     );
 

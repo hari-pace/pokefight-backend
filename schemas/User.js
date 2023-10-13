@@ -4,10 +4,11 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
   },
   score: {
     type: Number,
+    default: 0,
   },
 });
 
