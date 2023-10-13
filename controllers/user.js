@@ -18,7 +18,7 @@ const getAllUser = async (req, res) => {
 const getOneUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await User.find({ id: id });
+    const user = await User.findById(id);
     if (user) {
       return res.status(200).json(user);
     } else {
